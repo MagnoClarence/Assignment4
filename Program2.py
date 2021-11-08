@@ -36,8 +36,6 @@ applePrice, orangePrice = fruitPrice()
 
     # Step 2: Ask the user how many apples do they plan to buy.
     # Step 3: Ask the user how many oranges do they plan to buy.
-#applesCnt = getQty("apples")
-#orangeCnt = getQty("oranges")
 fruitCnt = getQty()
 
 print("\n")
