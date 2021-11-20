@@ -14,25 +14,41 @@ order = userInputs()
 # I followed the tournament system where i make them compete with each other first then
 # Compare the winners and losers to each other in order to find the order
 
-# First Round or Semi-Finals
+# First Round
 if order[0] >= order[1]:
-    finalistOne = order[0]
+    matchOneWin = order[0]
     matchOneLose = order[1]
 else:
-    finalistOne = order[1]
+    matchOneWin = order[1]
     matchOneLose = order[0]
 if order[2] >= order[3]:
-    finalistTwo = order[2]
+    matchTwoWin = order[2]
     matchTwoLose = order[3]
 else:
-    finalistTwo = order[3]
+    matchTwoWin = order[3]
     matchTwoLose = order[2]
-if matchOneLose >= matchTwoLose: # I compared the two losers from the first round to find whose third and fourth
-    third = matchOneLose
-    fourth = matchOneLose
+
+# Check if the loser on either match is actually higher than the winner on either match
+if matchOneWin <= matchTwoLose:
+    finalistOne = matchTwoLose
+    loserOne = matchOneWin
 else:
-    third = matchTwoLose
-    fourth = matchOneLose
+    finalistOne = matchOneWin
+    loserOne = matchTwoLose
+if matchTwoWin <= matchOneLose:
+    finalistTwo = matchOneLose
+    loserTwo = matchTwoWin
+else:
+    finalistTwo = matchTwoWin
+    loserTwo = matchOneLose
+
+# Check who will be the fourth and third
+if loserOne >= loserTwo: 
+    third = loserOne
+    fourth = loserTwo
+else:
+    third = loserTwo
+    fourth = loserOne
 
 #Finals
 if finalistOne >= finalistTwo:
@@ -45,4 +61,3 @@ else:
 # Print the order from highest to lowest
 list = [first,second,third,fourth]
 print(list)
-
